@@ -1,40 +1,34 @@
+const axios = require('axios').default;
 const {
     Router
 } = require('express');
 const {
     Recipe
 } = require('../db');
+const {API_KEY} = process.env;
 
 const router = Router();
 
 /* ----------------------- GET ----------------------- */
 
-router.get('/', (req, res, next) => {
-    return Recipe.findAll()
-        .then(response => res.send(response))
-        .catch(error => next(error));
-});
+// router.get('/', (req, res, next) => {
+//     return Recipe.findAll()
+//         .then(response => res.send(response))
+//         .catch(error => next(error));
+// });
 
 router.get('/:id', (req, res, next) => {
     const {
         id
     } = req.params;
 
-    return Recipe.findByPk(id)
-        .then(response => res.send(response))
-        .catch(error => next(error));
-});
-
-/* ----------------------- POST ----------------------- */
-
-router.post('/', (req, res, next) => {
-    const recipe = req.body;
-
-    return Recipe.create({
-        ...recipe
-    })
-        .then(response => res.send(response))
-        .catch(error => next(error))
+    return axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
+        .then(response => res.send(response.data))    
+        .catch(error => {
+                Recipe.findByPk(id)
+                .then(response => res.send(response))
+                .catch(error => next(error))
+        });
 });
 
 /* ----------------------- PUT ----------------------- */
