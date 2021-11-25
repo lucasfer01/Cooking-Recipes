@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 const {
-    Router
+  Router
 } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -9,11 +9,11 @@ const recipeRouter = require('./recipe');
 const dietRouter = require('./diets');
 
 const {
-    Recipe,
-    Diet
+  Recipe,
+  Diet
 } = require('../db');
 const {
-    API_KEY
+  API_KEY
 } = process.env;
 
 
@@ -30,57 +30,59 @@ router.use('/types', dietRouter);
 /* -----------------------------GET--------------------------------- */
 
 router.get('/recipes', (req, res, next) => {
-    const {
+      const {
         name
-    } = req.query;
+      } = req.query;
 
-    const recipesDb = Recipe.findAll({
+      const recipesDb = Recipe.findAll({
         include: Diet
-    });
+      });
 
-    const recipesApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100`);
+      const recipesApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100`);
 
-    return Promise.all([recipesDb, recipesApi])
+      return Promise.all([recipesDb, recipesApi])
         .then(response => {
             const [recipeDbResult, recipeApiResult] = response;
 
             const result = [...recipeDbResult, ...recipeApiResult.data.results];
 
             if (name) {
-                return res.send(result.filter(x => {
-                    if (x.name) {
-                        if (x.name.toLowerCase().includes(name)) {
-                            return x;
-                        }
-                    } else {
-                        if (x.title.toLowerCase().includes(name)) {
-                            return x;
-                        }
-                    }
-                }));
-            }
+              const resultFilter = result.filter(x => {
+                if (x.name) {
+                  if (x.name.toLowerCase().includes(name)) {
+                    return x;
+                  }
+                } else {
+                  if (x.title.toLowerCase().includes(name)) {
+                    return x;
+                  }
+                }
+              });
 
-            return res.send(result);
+              return resultFilter.length ? res.send(resultFilter) : (res.statusMessage = 'error404', res.send(404, 'Recipe not found'));
+              }
 
-        })
-        .catch(error => next(error))
-});
+              return res.send(result);
 
-/* -----------------------------POST--------------------------------- */
+            })
+          .catch(error => next(error))
+        });
 
-router.post('/:recipeId/:dietId', (req, res, next) => {
-    const {
+    /* -----------------------------POST--------------------------------- */
+
+    router.post('/:recipeId/:dietId', (req, res, next) => {
+      const {
         recipeId,
         dietId
-    } = req.params;
+      } = req.params;
 
-    Recipe.findByPk(recipeId)
+      Recipe.findByPk(recipeId)
         .then(response => {
-            return response.addDiets(dietId);
+          return response.addDiets(dietId);
         })
         .then(response => res.sendStatus(200))
         .catch(error => next(error));
 
-});
+    });
 
-module.exports = router;
+    module.exports = router;
