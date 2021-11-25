@@ -24,7 +24,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/recipes', recipesRouter);
 router.use('/recipe', recipeRouter)
-router.use('/diets', dietRouter);
+router.use('/types', dietRouter);
 
 
 /* -----------------------------GET--------------------------------- */
