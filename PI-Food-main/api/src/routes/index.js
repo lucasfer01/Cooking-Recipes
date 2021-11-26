@@ -59,7 +59,7 @@ router.get('/recipes', (req, res, next) => {
                 }
               });
 
-              return resultFilter.length ? res.send(resultFilter) : (res.statusMessage = 'error404', res.send(404, 'Recipe not found'));
+              return resultFilter.length ? res.send(resultFilter) : (res.statusMessage = 'error404', res.status(404).send('Recipe not found'));
               }
 
               return res.send(result);

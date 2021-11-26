@@ -1,9 +1,13 @@
 import './App.css';
+import AppContainer from './components/AppContainer';
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Food</h1>
+      <Routes>
+        <Route path="/" element={<AppContainer/>}/>
+      </Routes>
     </div>
   );
 }
