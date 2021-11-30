@@ -39,30 +39,24 @@
     background-color: transparent;
 }
 
-.buttonContainer:hover {
+/* .buttonContainer:hover {
     color: white;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-}
+} */
 
 .button {
     background: none;
     border: none;
-    font-size: 1.5rem;
-    position: absolute;
-    right: 2px;
-    top: -13px;
-    cursor: pointer;
-    transition: all .3s;
-    display: none;
-}
-
-.button:hover {
-    transform: scale(1.1);
 }
 
 .buttonImage {
     width: 70px;
     position: absolute;
-    right: -13px;
-    top: -35px;
+    right: -15px;
+    top: -20px;
+    transition: all .3s;
+}
+
+.buttonImage:hover {
+    transform: scale(1.15);
 }

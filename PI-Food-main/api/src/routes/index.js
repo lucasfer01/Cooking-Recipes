@@ -28,6 +28,7 @@ router.use('/types', dietRouter);
 
 
 /* -----------------------------GET--------------------------------- */
+let result;
 
 router.get('/recipes', (req, res, next) => {
       const {
@@ -38,13 +39,15 @@ router.get('/recipes', (req, res, next) => {
         include: Diet
       });
 
-      const recipesApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100`);
+
+      if(!result) {
+        const recipesApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
 
       return Promise.all([recipesDb, recipesApi])
         .then(response => {
             const [recipeDbResult, recipeApiResult] = response;
 
-            const result = [...recipeDbResult, ...recipeApiResult.data.results];
+            result = [...recipeDbResult, ...recipeApiResult.data.results];
 
             if (name) {
               const resultFilter = result.filter(x => {
@@ -60,12 +63,33 @@ router.get('/recipes', (req, res, next) => {
               });
 
               return resultFilter.length ? res.send(resultFilter) : (res.statusMessage = 'error404', res.status(404).send('Recipe not found'));
-              }
+            }
 
               return res.send(result);
 
             })
           .catch(error => next(error))
+      } else {
+        if (name) {
+          const resultFilter = result.filter(x => {
+            if (x.name) {
+              if (x.name.toLowerCase().includes(name)) {
+                return x;
+              }
+            } else {
+              if (x.title.toLowerCase().includes(name)) {
+                return x;
+              }
+            }
+          });
+
+          return resultFilter.length ? res.send(resultFilter) : (res.statusMessage = 'error404', res.status(404).send('Recipe not found'));
+        }
+
+          return res.send(result);
+      }
+
+      
         });
 
     /* -----------------------------POST--------------------------------- */
