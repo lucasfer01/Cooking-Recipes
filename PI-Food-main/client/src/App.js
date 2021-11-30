@@ -1,11 +1,21 @@
 import './App.css';
+import AppContainer from './components/AppContainer';
+import {Route, Routes} from 'react-router'
 
-function App() {
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import axios from 'axios'
+
+export function App() {
+ 
+
   return (
     <div className="App">
-      <h1>Henry Food</h1>
+      <Routes>
+        <Route path="/*" element={<AppContainer/>}/>
+      </Routes>
     </div>
   );
 }
 
-export default App;
+
