@@ -3,8 +3,6 @@ import SearchbarStyle from './styles/Searchbar.module.css';
 import eggIcon from '../images/egg-icon.png';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
-// // import { useEffect } from 'react';
-// import axios from 'axios'
 
 export function Searchbar() {
     const [inputValue, setInputValue] = useState({searchInput: '' });
@@ -24,12 +22,13 @@ export function Searchbar() {
         e.preventDefault();
         axios.get(`http://localhost:3001/recipes?name=${inputValue.searchInput}`)
             .then(response => {
+                console.log(response.data);
                 dispatch({
                     type: 'GET_FILTER',
                     payload: response.data
                 })
             })
-        
+        setInputValue({searchInput:''})
     }
 
 

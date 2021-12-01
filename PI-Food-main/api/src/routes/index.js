@@ -28,69 +28,36 @@ router.use('/types', dietRouter);
 
 
 /* -----------------------------GET--------------------------------- */
-let result;
 
 router.get('/recipes', (req, res, next) => {
-      const {
-        name
-      } = req.query;
+const {
+name
+} = req.query;
 
-      const recipesDb = Recipe.findAll({
-        include: Diet
+const recipesDb = Recipe.findAll({
+include: Diet
+});
+
+const recipesApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+
+
+Promise.all([recipesDb, recipesApi])
+  .then(response => {
+    const [db, api] = response;
+    
+    const result = [...db, ...api.data.results];
+
+    if(name) {
+      const resultFilter = result.filter(x => {
+        return (x.title || x.name).toLowerCase().includes(name.toString().toLowerCase());
       });
 
+      return resultFilter.length ? res.send(resultFilter) : (res.statusMessage = 'error404', res.status(404).send('Recipe not found'));
+    }
 
-      if(!result) {
-        const recipesApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
-
-      return Promise.all([recipesDb, recipesApi])
-        .then(response => {
-            const [recipeDbResult, recipeApiResult] = response;
-
-            result = [...recipeDbResult, ...recipeApiResult.data.results];
-
-            if (name) {
-              const resultFilter = result.filter(x => {
-                if (x.name) {
-                  if (x.name.toLowerCase().includes(name)) {
-                    return x;
-                  }
-                } else {
-                  if (x.title.toLowerCase().includes(name)) {
-                    return x;
-                  }
-                }
-              });
-
-              return resultFilter.length ? res.send(resultFilter) : (res.statusMessage = 'error404', res.status(404).send('Recipe not found'));
-            }
-
-              return res.send(result);
-
-            })
-          .catch(error => next(error))
-      } else {
-        if (name) {
-          const resultFilter = result.filter(x => {
-            if (x.name) {
-              if (x.name.toLowerCase().includes(name)) {
-                return x;
-              }
-            } else {
-              if (x.title.toLowerCase().includes(name)) {
-                return x;
-              }
-            }
-          });
-
-          return resultFilter.length ? res.send(resultFilter) : (res.statusMessage = 'error404', res.status(404).send('Recipe not found'));
-        }
-
-          return res.send(result);
-      }
-
-      
-        });
+    return res.send(result);
+  });    
+});
 
     /* -----------------------------POST--------------------------------- */
 

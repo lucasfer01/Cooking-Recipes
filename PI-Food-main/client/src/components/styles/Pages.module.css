@@ -1,0 +1,15 @@
+.contenedorPages {
+    /* color: #fff;
+    font-size: 18px; */
+}
+
+.links {
+    color: #fff;
+    font-size: 18px;
+    padding: 0 5px 0 5px;
+}
+
+.active {
+    font-size: 25px;
+    font-weight: 700;
+}
