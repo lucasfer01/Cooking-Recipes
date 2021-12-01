@@ -3,7 +3,8 @@ const {
     Router
 } = require('express');
 const {
-    Recipe
+    Recipe,
+    Diet
 } = require('../db');
 const {API_KEY} = process.env;
 
@@ -25,7 +26,7 @@ router.get('/:id', (req, res, next) => {
     return axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
         .then(response => res.send(response.data))    
         .catch(error => {
-                Recipe.findByPk(id)
+                Recipe.findByPk(id,{include: Diet})
                 .then(response => res.send(response))
                 .catch(error => next(error))
         });

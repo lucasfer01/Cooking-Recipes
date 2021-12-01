@@ -29,7 +29,7 @@ router.post('/', (req, res, next) => {
     const diet = req.body;
 
     return Diet.create({
-        ...diet
+        name: diet.name.toLowerCase()
     }).then(response => res.send(response))
       .catch(error => next(error));
 });
