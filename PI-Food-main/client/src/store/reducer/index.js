@@ -24,13 +24,13 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                showedData: action.payload.sort((a, b) => ((a.spoonacularScore || a.score) - (b.spoonacularScore || b.score)))
+                showedData: action.payload.sort((a, b) => ((a.spoonacularScore || a.rate) - (b.spoonacularScore || b.rate)))
             }
 
         case 'GET_ORDER_DOWN':
             return {
                 ...state,
-                showedData: action.payload.sort((a, b) => ((a.spoonacularScore || a.score) - (b.spoonacularScore || b.score))).reverse()
+                showedData: action.payload.sort((a, b) => ((a.spoonacularScore || a.rate) - (b.spoonacularScore || b.rate))).reverse()
             }
             
         case 'GET_ORDER_UP_ALF':

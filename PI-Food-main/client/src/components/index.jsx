@@ -22,7 +22,6 @@ export function Index() {
 
     return (
         <div className={indexStyle.container}>
-            <Searchbar/>
 
             <div className={indexStyle.title}>
                 <h1 className={indexStyle.h1}>+5000 recetas</h1>

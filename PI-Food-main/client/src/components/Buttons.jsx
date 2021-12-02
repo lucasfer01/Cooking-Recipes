@@ -93,6 +93,7 @@ export function Buttons() {
                 <button onClick={handleOnOrder}>
                     Ordenar por score
                 </button>
+                
                     <br/>
                 <button onClick={handleOnOrderAlf}>
                     Ordenar alfabeticamente
