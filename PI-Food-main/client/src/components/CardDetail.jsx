@@ -46,6 +46,19 @@ export function CardDetail() {
                     <p>{(data.spoonacularScore || data.rate) / 20}</p>
                     <h2>Health Score</h2>
                     <p>{(data.healthScore || data.healthRate) / 20}</p>
+
+                    {(data.analyzedInstructions || data.steps.length) && 
+                    
+                        (<>
+                            <h2>Pasos a seguir</h2>
+
+                            {(data.steps || data.analyzedInstructions[0].steps).map(step  => (
+                                <>
+                                    <h4>paso {step.number}</h4>
+                                    <p>{step.step}</p>
+                                </>
+                            ))}
+                        </>)}
                 </> 
                 }
             </div>

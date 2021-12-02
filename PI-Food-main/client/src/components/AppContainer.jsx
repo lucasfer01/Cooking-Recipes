@@ -4,6 +4,7 @@ import {Index} from './index'
 import Home from './Home'
 import {CardDetail} from './CardDetail'
 import { PostForm } from './PostForm'
+import { CreatedRecipes } from './CreatedRecipes'
 
 function AppContainer() {
     return (
@@ -13,6 +14,7 @@ function AppContainer() {
                 <Route path='/home/:id' element={<Home/>} />
                 <Route path='/recipe/:id' element={<CardDetail/>}/>
                 <Route path='/newRecipe' element={<PostForm/>} />
+                <Route path='/createdRecipes' element={<CreatedRecipes/>} />
             </Routes>
         </>
     )

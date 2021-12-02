@@ -7,6 +7,7 @@ const {
 const recipesRouter = require('./recipes');
 const recipeRouter = require('./recipe');
 const dietRouter = require('./diets');
+const createdRecipes = require('./createdRecipes')
 
 const {
   Recipe,
@@ -22,6 +23,7 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+router.use('/createdRecipes', createdRecipes)
 router.use('/recipes', recipesRouter);
 router.use('/recipe', recipeRouter)
 router.use('/types', dietRouter);
