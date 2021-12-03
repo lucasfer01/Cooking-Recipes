@@ -1,7 +1,8 @@
 
 const initialState = {
     recipes: [],
-    showedData: []
+    showedData: [],
+    loader: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -67,6 +68,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 showedData: action.payload
+            }
+
+        case 'LOADER':
+            return {
+                ...state,
+                loader: !state.loader
             }
 
 

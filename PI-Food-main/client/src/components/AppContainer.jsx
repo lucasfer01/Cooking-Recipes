@@ -8,7 +8,7 @@ import { CreatedRecipes } from './CreatedRecipes'
 
 function AppContainer() {
     return (
-        <>
+        <div>
             <Routes>
                 <Route path="/" exact element={<Index/>} />
                 <Route path='/home/:id' element={<Home/>} />
@@ -16,7 +16,7 @@ function AppContainer() {
                 <Route path='/newRecipe' element={<PostForm/>} />
                 <Route path='/createdRecipes' element={<CreatedRecipes/>} />
             </Routes>
-        </>
+        </div>
     )
 }
 

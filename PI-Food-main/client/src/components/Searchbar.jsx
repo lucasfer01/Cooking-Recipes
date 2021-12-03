@@ -20,12 +20,21 @@ export function Searchbar() {
 
     const handleOnSubmit =  (e) => {
         e.preventDefault();
+
+        dispatch({
+            type: 'LOADER'
+        })
+
         axios.get(`http://localhost:3001/recipes?name=${inputValue.searchInput}`)
             .then(response => {
                 console.log(response.data);
                 dispatch({
                     type: 'GET_FILTER',
                     payload: response.data
+                });
+
+                dispatch({
+                    type: 'LOADER'
                 })
             })
         setInputValue({searchInput:''})

@@ -1,0 +1,5 @@
+.contenedorApp {
+    background-image: url('../../images/fondoForm.jpg');
+    background-size: cover ;
+    background-attachment: fixed;
+}

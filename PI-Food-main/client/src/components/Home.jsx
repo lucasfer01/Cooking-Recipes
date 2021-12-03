@@ -1,20 +1,19 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Navbar} from './Navbar'
 import {RecipeCards} from './RecipeCards'
-import {useDispatch} from 'react-redux'
-import axios from 'axios'
 import { Pages } from './Pages'
 import { useParams } from 'react-router'
+import appContainerStyle from './styles/AppContainer.module.css'
 
 function Home() {
     const {id} = useParams();
 
     return (
-        <>
+        <div className={appContainerStyle.contenedorApp}>
             <Navbar/>
             <RecipeCards/>
             <Pages page={id}/>
-        </>
+        </div>
     )
 }
 

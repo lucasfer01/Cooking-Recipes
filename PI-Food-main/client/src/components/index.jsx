@@ -2,23 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import indexStyle from './styles/Index.module.css';
 import imgButton from '../images/logo-food.png'
-import {Searchbar} from './Searchbar';
-import { useDispatch } from 'react-redux';
-import axios from 'axios';
 
 export function Index() {
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:3001/recipes')
-    //         .then(response => {
-
-    //             dispatch({
-    //                 type: 'GET_RECIPES',
-    //                 payload: response.data
-    //             });
-    //         });
-    // });
 
     return (
         <div className={indexStyle.container}>
