@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { TYPES_URL, BACK_URL } from './enviroment';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import postFormStyle from './styles/PostForm.module.css'
 
 export function PostForm() {
     const navigate = useNavigate();
@@ -9,8 +10,8 @@ export function PostForm() {
     const [values, setValues] = useState({
         name: '',
         summary: '',
-        rate: 1,
-        healthRate: 1,
+        rate: 50,
+        healthRate: 50,
         steps: [],
         tempStep: '',
         counter: 1
@@ -57,6 +58,19 @@ export function PostForm() {
         })
     }
 
+    function handleOnClickLess(e) {
+        e.preventDefault();
+
+        const temp = values.steps.slice(0,values.steps.length - 1);
+
+        setValues({
+            ...values,
+            steps: temp,
+            counter: values.counter - 1,
+            tempStep: ''
+        })
+    }
+
     function handleOnSubmit(e) {
         e.preventDefault();
 
@@ -83,71 +97,104 @@ export function PostForm() {
                 });
 
                 Promise.all(dietPromises)
-                       .then(res => navigate('/home/1'))
+                    .then(res => navigate('/home/1'))
             });
     }
 
     function handleOnChangeInput(e) {
         if (selectedDiets && selectedDiets[e.target.name]) {
-            const temp = {...selectedDiets};
-            
+            const temp = { ...selectedDiets };
+
             delete temp[e.target.name];
-            
+
             setSelectedDiets(temp);
         } else {
             setSelectedDiets({
                 ...selectedDiets,
                 [e.target.name]: e.target.id
             });
-            
+
         }
         // console.log(selectedDiets);
     }
 
     return (
-        <div>
-            <form onSubmit={handleOnSubmit}>
-                <input type="text" name='name' max='100' min='1' onChange={handleOnChange} value={values.name} placeholder='Nombre de la receta...' />
+        <div className={postFormStyle.contenedorForm}>
 
-                <br />
+            <form className={postFormStyle.form} onSubmit={handleOnSubmit}>
 
-                <br />
+                <h1 className={postFormStyle.titulo}>AGREGAR RECETA</h1>
 
-                <textarea name="summary" onChange={handleOnChange} value={values.summary} placeholder='Resumen del plato...' ></textarea>
+                <div className={postFormStyle.contenedorInputs}>
+                    <div className={postFormStyle.contenedorInputsPrincipales}>
+                        <input className={postFormStyle.inputName} type="text" name='name' max='100' min='1' onChange={handleOnChange} value={values.name} placeholder='Nombre de la receta...' />
 
-                <br />
+                        <br />
 
-                <label htmlFor="number">Puntuacion de receta</label>
-                <br />
-                <input type="number" name="rate" id="number" onChange={handleOnChange} value={values.rate} />
+                        <label className={postFormStyle.label} htmlFor="number">Puntuación</label>
 
-                <br />
+                        <br />
 
-                <label htmlFor="numberHealth">Puntuacion saludable de receta</label>
-                <br />
-                <input type="number" name="healthRate" id="numberHealth" onChange={handleOnChange} value={values.healthRate} />
+                        <input className={postFormStyle.inputScore} type="number" name="rate" id="number" onChange={handleOnChange} value={values.rate} />
 
-                <br />
+                        <br />
 
-                <textarea name="tempStep" onChange={handleOnChange} value={values.tempStep} placeholder='Ingrese el paso a paso' ></textarea>
+                        <label className={postFormStyle.label} htmlFor="numberHealth">Puntuación saludable</label>
 
-                <button onClick={handleOnClick}>Agregar paso</button>
+                        <br />
 
-                <br />
-                <br />
+                        <input className={postFormStyle.inputScore} type="number" name="healthRate" id="numberHealth" onChange={handleOnChange} value={values.healthRate} />
 
-                {diets && <h4>Agregar tipo de dieta</h4>}
-                {diets && diets.map(diet => (
-                    <>
-                        <input type="checkbox" onChange={handleOnChangeInput} name={diet.name} id={diet.id} />
-                        <label htmlFor={diet.id}>{diet.name}</label>
-                    </>
-                ))}
+                        {diets && <h4 className={postFormStyle.tituloH4}>Agregar tipo de dieta</h4>}
+
+                        <div className={postFormStyle.inputDietsContainer}>
+                            {diets && diets.map(diet => (
+                                <div className={postFormStyle.dieta}>
+                                    <input type="checkbox" onChange={handleOnChangeInput} name={diet.name} id={diet.id} />
+                                    <label htmlFor={diet.id}>{diet.name}</label>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <br />
+
+                    <div  className={postFormStyle.contenedorInputsSecundarios}>
+                        <textarea className={postFormStyle.inputResumen} name="summary" onChange={handleOnChange} value={values.summary} placeholder='Resumen del plato...' ></textarea>
+
+                        <br />
+
+
+                        <br />
+
+                        <textarea className={postFormStyle.inputPaso} name="tempStep" onChange={handleOnChange} value={values.tempStep} placeholder='Ingrese el paso a paso' ></textarea>
+
+                        <br /><br />
+
+                        <button className={postFormStyle.agregarPasoButton} onClick={handleOnClick}>➕</button>
+                        <button className={postFormStyle.agregarPasoButton2} onClick={handleOnClickLess}>➖</button>
+
+                        <div className={postFormStyle.contenedorSteps}>
+                            {values.steps && values.steps.map(step => (
+                                <span id={step.number} className={postFormStyle.step} >PASO {step.number}</span>
+                            ))}
+                        </div>
+                    </div>
+
+
 
                     <br />
                     <br />
 
-                <button type='submit'>Agregar receta</button>
+
+                    <br />
+                    <br />
+
+                    <button className={postFormStyle.buttonAgregar} type='submit'>Agregar receta</button>
+                </div>
+
             </form>
         </div>
     )

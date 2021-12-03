@@ -1,0 +1,165 @@
+.contenedorForm {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../images/fondoForm.jpg');
+    background-size: cover;
+    overflow: hidden;
+}
+
+.contenedorInputs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contenedorInputsPrincipales {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 2.5rem;
+}
+
+.contenedorInputsSecundarios {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-right: 5px;
+}
+
+.inputResumen {
+    resize: none;
+    border-radius: 10px;
+    width: 17rem;
+    height: 8rem;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.inputPaso {
+    resize: none;
+    border-radius: 10px;
+    width: 17rem;
+    height: 4rem;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.agregarPasoButton {
+    position: absolute;
+    top: 190px;
+    right: 0px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.agregarPasoButton2 {
+    position: absolute;
+    top: 230px;
+    right: 0px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.contenedorSteps {
+    width: 17rem;
+    height: 6rem;
+    text-align: center;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+.step {
+    width: 15%;
+    height: 1.5rem;
+    background-color: rgba(59, 240, 179, 0.801);
+    margin-left: 6px;
+    margin-top: 5px;
+    padding: 3px 8px;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+}
+
+.titulo {
+    color: #fff;
+}
+
+.tituloH4 {
+    color: #fff;
+    margin: 0;
+    padding: 20px 0 10px 0;
+}
+
+.label {
+    color: #fff;
+}
+
+.inputScore {
+    width: 2.5rem
+}
+
+.form {
+    width: 70%;
+    height: 90%;
+    background-color: #27262ba2;
+    border-radius: 50px;
+}
+
+.inputName {
+    border-radius: 10px;
+    width: 15rem;
+    height: 3rem;
+    height: 1.7rem;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.inputDietsContainer {
+    width: 22rem;
+    height: 9rem;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.dieta {
+    width: 30%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.dieta label {
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.buttonAgregar {
+    position: absolute;
+    top: 250px;
+    right: 40px;
+    border-radius: 20px;
+    width: 6rem;
+    height: 6rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .7);
+    background-color: rgb(13, 241, 81);
+    cursor: pointer;
+}
