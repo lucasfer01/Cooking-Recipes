@@ -1,0 +1,17 @@
+.contendorDiets {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.diet {
+    width: 16%;
+    display: flex;
+    align-items: center;
+}
+
+.diet label {
+    font-size: .8rem;
+    color: #fff;
+}

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { TYPES_URL, BACK_URL } from './enviroment';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import postFormStyle from './styles/PostForm.module.css'
+import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
 
 export function PostForm() {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ export function PostForm() {
         rate: 50,
         healthRate: 50,
         steps: [],
+        image: '',
         tempStep: '',
         counter: 1
     });
@@ -32,12 +34,12 @@ export function PostForm() {
             if (parseInt(e.target.value) > 100) {
                 return setValues({
                     ...values,
-                    rate: 100
+                    [e.target.name]: 100
                 })
             } else if (parseInt(e.target.value) < 1) {
                 return setValues({
                     ...values,
-                    rate: 1
+                    [e.target.name]: 1
                 })
             }
         }
@@ -79,7 +81,8 @@ export function PostForm() {
             summary: values.summary,
             rate: values.rate,
             healthRate: values.healthRate,
-            steps: values.steps
+            steps: values.steps,
+            image: values.image
         })
             .then(res => {
                 setValues({
@@ -89,7 +92,8 @@ export function PostForm() {
                     healthRate: 1,
                     steps: [],
                     tempStep: '',
-                    counter: 1
+                    counter: 1,
+                    image: ''
                 })
 
                 const dietPromises = Object.values(selectedDiets).map(dietId => {
@@ -120,6 +124,10 @@ export function PostForm() {
 
     return (
         <div className={postFormStyle.contenedorForm}>
+
+            <Link className={postFormStyle.Link} to='/home/1'>
+                <BsFillArrowLeftCircleFill className={postFormStyle.atras} />
+            </Link>
 
             <form className={postFormStyle.form} onSubmit={handleOnSubmit}>
 
@@ -162,6 +170,8 @@ export function PostForm() {
                     <br />
 
                     <div  className={postFormStyle.contenedorInputsSecundarios}>
+                        <input type="text" name='image' onChange={handleOnChange} value={values.image} placeholder='Url imagen...' className={postFormStyle.inputImage} />
+
                         <textarea className={postFormStyle.inputResumen} name="summary" onChange={handleOnChange} value={values.summary} placeholder='Resumen del plato...' ></textarea>
 
                         <br />
@@ -169,28 +179,21 @@ export function PostForm() {
 
                         <br />
 
-                        <textarea className={postFormStyle.inputPaso} name="tempStep" onChange={handleOnChange} value={values.tempStep} placeholder='Ingrese el paso a paso' ></textarea>
+                        <div>
+                            <textarea className={postFormStyle.inputPaso} name="tempStep" onChange={handleOnChange} value={values.tempStep} placeholder='Ingrese el paso a paso' ></textarea>
 
-                        <br /><br />
+                            <br /><br />
 
-                        <button className={postFormStyle.agregarPasoButton} onClick={handleOnClick}>➕</button>
-                        <button className={postFormStyle.agregarPasoButton2} onClick={handleOnClickLess}>➖</button>
+                            <button className={postFormStyle.agregarPasoButton} onClick={handleOnClick}>➕</button>
+                            <button className={postFormStyle.agregarPasoButton2} onClick={handleOnClickLess}>➖</button>
 
-                        <div className={postFormStyle.contenedorSteps}>
-                            {values.steps && values.steps.map(step => (
-                                <span id={step.number} className={postFormStyle.step} >PASO {step.number}</span>
-                            ))}
+                            <div className={postFormStyle.contenedorSteps}>
+                                {values.steps && values.steps.map(step => (
+                                    <span id={step.number} className={postFormStyle.step} >PASO {step.number}</span>
+                                ))}
+                            </div>
                         </div>
                     </div>
-
-
-
-                    <br />
-                    <br />
-
-
-                    <br />
-                    <br />
 
                     <button className={postFormStyle.buttonAgregar} type='submit'>Agregar receta</button>
                 </div>

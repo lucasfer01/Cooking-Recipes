@@ -1,0 +1,57 @@
+.contenedor {
+    padding-left: 70px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.contenedorBotones {
+    display: flex;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonDiet {
+    color: #fff;
+}
+
+.buttonSort {
+    width: 4rem;
+    height: 1,5rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    margin: 0 5px;
+}
+
+.contenedorBotonesSort {
+    margin-left: 10px;
+    display: flex;
+}
+
+.tituloH5 {
+    margin: 0;
+}
+
+.restartButton {
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    height: 1.5rem;
+}
+
+.buttonDietFilter {
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}
+
+.contenedorRestart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    height: 60%;
+}
