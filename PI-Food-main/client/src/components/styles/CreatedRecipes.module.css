@@ -1,0 +1,24 @@
+.contenedor {
+    padding: 30px;
+}
+
+.deleteButtonContainer {
+    position: relative;
+}
+
+.deleteButton {
+    position: absolute;
+    top: -13px;
+    right: -13px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    border-radius: 20px;
+    outline: none;
+    /* border: 2px solid #fff; */
+    border: transparent;
+    padding: 5px;
+    text-align: center;
+    background-color: #ff0000;
+    color: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .8);
+}

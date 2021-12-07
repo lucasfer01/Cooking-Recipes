@@ -7,6 +7,7 @@ import {GiKnifeFork} from 'react-icons/gi';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from './Loader';
+import styleCreatedRecipes from './styles/CreatedRecipes.module.css';
 
 
 export function CreatedRecipes() {
@@ -43,20 +44,24 @@ export function CreatedRecipes() {
     return !loader ? (
         <div>
             <NavbarCardDetail/>
-            {recipes && recipes.map(recipe => (
-                <div style={{ width: '30%' }}>
-                    <div style={{width: '30px', height: '30px', position: 'relative'}}>
-                        <button id={recipe.id} onClick={handleOnClick} style={{position:'absolute',cursor:'pointer'}}>
-                            <GiKnifeFork id={recipe.id} onClick={handleOnClick}/>
-                        </button>
+
+            <div className={styleCreatedRecipes.contenedor}>
+                {recipes && recipes.map(recipe => (
+                    <div style={{ width: '30%' }}>
+                        <div className={styleCreatedRecipes.deleteButtonContainer}>
+                            <button id={recipe.id} onClick={handleOnClick} className={styleCreatedRecipes.deleteButton}>
+                                <GiKnifeFork id={recipe.id} onClick={handleOnClick}/>
+                            </button>
+                        </div>
+                        <Card id={recipe.id}
+                            name={recipe.title || recipe.name}
+                            diets={recipe.diets}
+                            image={recipe.image}
+                            score={recipe.spoonacularScore || recipe.rate}
+                            healthScore={recipe.healthScore || recipe.healthRate} />
                     </div>
-                    <Card id={recipe.id}
-                        name={recipe.title || recipe.name}
-                        diets={recipe.diets}
-                        image={recipe.image}
-                        score={recipe.spoonacularScore || recipe.rate} />
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     ) : (
         <Loader/>

@@ -1,0 +1,100 @@
+.container {
+    background-image: url('../../images/fondoDetail.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    /* backdrop-filter: blur(2px); */
+    display: flex;
+    /* justify-content: flex-end; */
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.contentContainer {
+    /* background-color: #27262ba2; */
+    border-radius: 50px;
+    width: 50%;
+    margin-top: 30px;
+    margin-right: 50px;
+    backdrop-filter: blur(.7px);
+}
+
+.contentContainer img {
+    max-width: 35rem;
+}
+
+.detailContainer {
+    display: flex;
+    /* justify-content: space-evenly; */
+    padding: 50px 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* gap: 120px; */
+}
+
+.tipoDePlato {
+    width: 45%;
+}
+
+.tipoDeDieta {
+    width: 45%;
+}
+
+.contenedorScore {
+   text-align: left; 
+}
+
+.tituloH1 {
+    color: #fff;
+    padding: 30px 0;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+    font-family: 'Arizonia', cursive;
+    letter-spacing: 5px;
+}
+
+.tituloH2 {
+    font-family: 'Arizonia', cursive;
+    color: #fff;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+    letter-spacing: 4px;
+    font-size: 2rem;
+}
+
+.resumen {
+    text-align: justify;
+    font-weight: 700;
+    letter-spacing: 3px;
+    /* text-shadow: 0px 0px 2px rgb(255, 255, 255); */
+}
+
+.li {
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.puntajes {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.paso {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: start; */
+    align-items: flex-start;
+}
+
+.paso h4 {
+    font-family: 'Arizonia', cursive;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.paso p {
+    font-weight: 500;
+    text-align: justify;
+
+}

@@ -1,15 +1,20 @@
 .contenedorPages {
-    /* color: #fff;
-    font-size: 18px; */
+    padding: 20px 0;
 }
 
 .links {
-    color: #fff;
-    font-size: 18px;
-    padding: 0 5px 0 5px;
+    color: #333;
+    font-size: 1.2rem;
+    padding: 0 5px;
+    text-decoration: none;
+    background-color: #ccc;
+    margin: 0 5px;
+    border-radius: 5px;
 }
 
 .active {
-    font-size: 25px;
+    font-size: 1.55rem;
+    color: #000;
     font-weight: 700;
+    text-decoration: underline;
 }
