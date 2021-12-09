@@ -3,4 +3,46 @@
     background-attachment: fixed;
     background-size: cover;
     min-height: 100vh;
+    display: flex;
+    justify-content: right;
+    /* align-items: center; */
+}
+
+.form {
+    width: 75%;
+    /* height: 85vh; */
+    margin-right: 30px;
+    background-color: rgba(0, 0, 0, 0.472);
+    border-radius: 15px;
+}
+
+.contenedorInputs {
+    width: 95%;
+    /* height: 90%; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contenedorScore {
+    display: flex;
+    justify-content: space-between;
+}
+
+.scoreInput {
+    width: 3rem;
+}
+
+.h1 {
+    color: #fff;
+}
+
+.h3 {
+    color: #fff;
+}
+
+.stepsContainer {
+    display: flex;
+    justify-content: space-evenly;
 }

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import axios from 'axios';
-import { NavbarCardDetail } from './NavbarCardDetail';
 import { useDispatch, useSelector } from 'react-redux'
 import { Loader } from './Loader'
 import styleCardDetail from './styles/CardDetail.module.css'
+import postFormStyle from './styles/PostForm.module.css'
+import { Link } from 'react-router-dom';
+import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
 
 
 export function CardDetail() {
@@ -45,10 +47,10 @@ export function CardDetail() {
 
             <div className={styleCardDetail.detailContainer}>
               <div className={styleCardDetail.tipoDePlato}>
-                {data.dishTypes && <h2 className={styleCardDetail.tituloH2}>Tipo de plato:</h2>}
+                <h2 className={styleCardDetail.tituloH2}>Tipo de plato:</h2>
 
                 <ul>
-                  {data.dishTypes &&
+                  {data.dishTypes ?
                     data.dishTypes.map(type => {
                       return (
                         <>
@@ -57,7 +59,7 @@ export function CardDetail() {
                           <br />
                         </>
                       )
-                    })}
+                    }) : <span>-</span>}
                 </ul>
               </div>
 
@@ -65,12 +67,12 @@ export function CardDetail() {
                 <h2 className={styleCardDetail.tituloH2}>Tipo de Dieta</h2>
 
                 <ul>
-                  {data.diets.length && data.diets.map(diet => (
+                  {data.diets.length ? data.diets.map(diet => (
                     <>
                       <li className={styleCardDetail.li} id={diet.name || diet}>{(diet.name || diet)[0].toUpperCase() + (diet.name || diet).slice(1)}</li>
                       <br />
                     </>
-                  ))}
+                  )) : <span>-</span>}
                 </ul>
 
               </div>
@@ -92,7 +94,7 @@ export function CardDetail() {
 
             <p className={styleCardDetail.resumen} dangerouslySetInnerHTML={{ __html: data.summary }}></p>
 
-            {(data.analyzedInstructions || data.steps.length) &&
+            {(data.analyzedInstructions || data.steps.length) ?
 
               (<>
                 {(data.steps || data.analyzedInstructions.length) ? <h2 style={{marginBottom:'0'}} className={styleCardDetail.tituloH2}>Pasos a seguir</h2> : ''}
@@ -107,10 +109,13 @@ export function CardDetail() {
                   )) : <span>-</span>}
                 </div>
 
-              </>)}
+              </>) : ''}
           </>
         }
       </div>
+      <Link className={postFormStyle.Link} to='/home/1'>
+        <BsFillArrowLeftCircleFill className={postFormStyle.atras}/>
+      </Link>
     </div>
   ) : (
     <Loader />

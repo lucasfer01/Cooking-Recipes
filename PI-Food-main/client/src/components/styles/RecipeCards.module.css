@@ -15,7 +15,7 @@
 .buttonContainer {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     margin-right: 0;
     margin-left: 0;
@@ -31,10 +31,17 @@
     box-sizing: border-box;
     border: transparent;
     box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    font-weight: 100;
+    color: #ffffff;
     cursor: pointer;
-    background-color: rgb(255, 247, 0);
-    font-weight: 700;
     transition: all .3s;
+    background: #457fca;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
 }
 
 .button:hover {
