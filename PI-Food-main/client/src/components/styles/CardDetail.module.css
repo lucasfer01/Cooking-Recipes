@@ -10,25 +10,27 @@
 }
 
 .contentContainer {
+    box-sizing: border-box;
     /* background-color: #27262ba2; */
     border-radius: 50px;
     width: 50%;
     margin-top: 30px;
     margin-right: 50px;
     backdrop-filter: blur(.7px);
+    padding: 30px;
 }
 
 .contentContainer img {
     max-width: 35rem;
+    border-radius: 50%;
 }
 
 .detailContainer {
     display: flex;
     /* justify-content: space-evenly; */
     padding: 50px 0 20px 0;
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     /* gap: 120px; */
 }
 
@@ -62,8 +64,10 @@
 
 .resumen {
     text-align: justify;
-    font-weight: 700;
-    letter-spacing: 3px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #000;
+    font-style: italic;
     /* text-shadow: 0px 0px 2px rgb(255, 255, 255); */
 }
 

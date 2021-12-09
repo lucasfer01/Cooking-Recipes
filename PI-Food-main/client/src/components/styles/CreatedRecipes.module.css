@@ -1,5 +1,82 @@
+.contentContainer {
+    background-image: url('../../images/fondoCreatedRecipe.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-y: -90px;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .contenedor {
-    padding: 30px;
+    /* background-color: rgba(0, 0, 0, 0.664); */
+    width: 20rem;
+    height: 25rem;
+    padding: 15px 8px 0 8px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.scoreContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 1.6rem;
+}
+
+.dietsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.li {
+    color: #fff;
+    text-align: left;
+    font-weight: 100;
+}
+
+.h1 {
+    color: #fff;
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+.h3 {
+    color: #fff;
+    font-style: italic;
+    margin-top: 0px;
+    
+}
+
+.span {
+    color: #fff;
+}
+
+.imgContainer {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px dotted #fff;
+}
+
+.img {
+    max-width: 10rem;
+}
+
+.fotoYDietas {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2.4rem;
 }
 
 .deleteButtonContainer {
@@ -8,7 +85,49 @@
 
 .deleteButton {
     position: absolute;
-    top: -13px;
+    top: -1.3rem;
+    right: -2.1rem;
+}
+
+.button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.button2 {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.icon {
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 7px;
+    border-radius: 50%;
+    background: red;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.562);
+}
+
+.icon2 {
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 7px;
+    background: gold;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.562);
+}
+
+.editButton {
+    position: absolute;
+    top: 1.3rem;
+    right: -1.8rem;
+}
+
+.link {
+    position: absolute;
+    top: 33px;
     right: -13px;
     cursor: pointer;
     font-size: 1.3rem;
@@ -18,7 +137,34 @@
     border: transparent;
     padding: 5px;
     text-align: center;
-    background-color: #ff0000;
+    background-color: #d4c711;
     color: #fff;
     box-shadow: 0 0 3px rgba(0, 0, 0, .8);
+}
+
+.buttonAdelante, .buttonAtras {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.562);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.buttonAdelante:hover , .buttonAtras:hover {
+    background-color: #ccc;
+}
+
+.buttonAdelante {
+    top: 11rem;
+    right: -1.65rem;
+}
+
+.buttonAtras {
+    top: 11rem;
+    left: -2.3rem;
 }

@@ -63,6 +63,8 @@ export function PostForm() {
     function handleOnClickLess(e) {
         e.preventDefault();
 
+        if(values.counter === 1) return
+
         const temp = values.steps.slice(0,values.steps.length - 1);
 
         setValues({
@@ -96,13 +98,16 @@ export function PostForm() {
                     image: ''
                 })
 
-                const dietPromises = Object.values(selectedDiets).map(dietId => {
-                    return axios.post(BACK_URL + `/${res.data.id}/${dietId}`);
-                });
+                if(selectedDiets) {
+                    const dietPromises = Object.values(selectedDiets).map(dietId => {
+                        return axios.post(BACK_URL + `/${res.data.id}/${dietId}`);
+                    });
+    
+                    Promise.all(dietPromises)
+                        .then(res => navigate('/home/1'))
+                }
 
-                Promise.all(dietPromises)
-                    .then(res => navigate('/home/1'))
-            });
+            }).finally(() => navigate('/home/1'));
     }
 
     function handleOnChangeInput(e) {

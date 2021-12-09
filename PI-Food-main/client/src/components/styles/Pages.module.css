@@ -3,18 +3,21 @@
 }
 
 .links {
-    color: #333;
+    color: rgb(255, 255, 255);
     font-size: 1.2rem;
     padding: 0 5px;
     text-decoration: none;
-    background-color: #ccc;
     margin: 0 5px;
     border-radius: 5px;
+    background: #457fca;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .active {
     font-size: 1.55rem;
-    color: #000;
+    color: rgb(255, 255, 255);
     font-weight: 700;
     text-decoration: underline;
 }

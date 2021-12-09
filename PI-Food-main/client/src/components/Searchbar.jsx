@@ -27,12 +27,18 @@ export function Searchbar() {
 
         axios.get(`http://localhost:3001/recipes?name=${inputValue.searchInput}`)
             .then(response => {
-                console.log(response.data);
                 dispatch({
                     type: 'GET_FILTER',
                     payload: response.data
                 });
-
+            })
+            .catch(err => {
+                dispatch({
+                    type: 'GET_FILTER',
+                    payload: []
+                });
+            })
+            .finally(() => {
                 dispatch({
                     type: 'LOADER'
                 })
