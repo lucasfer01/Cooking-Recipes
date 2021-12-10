@@ -1,14 +1,16 @@
 import axios from 'axios';
 
 export function getRecipes() {
-    return function(dispatch) {
-        return axios.get('http://localhost:3001/recipes')
-            .then(response => {
-
+    return async function(dispatch) {
+        try {
+                const data = await axios.get('http://localhost:3001/recipes').data;
+                
                 dispatch({
                     type: 'GET_RECIPES',
-                    payload: response.data
+                    payload: data
                 });
-            });
+            } catch(e) {
+                console.log(e)
+            }
     }
 }

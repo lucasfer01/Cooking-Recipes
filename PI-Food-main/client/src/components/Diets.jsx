@@ -32,9 +32,9 @@ export function Diets() {
             setSelectedDiets([...selectedDiets, e.target.name])
 
             const filterCategory = state.showedData.filter(x => {
-                if(typeof x.diets[0] === 'object') {
-                    for(let i=0; i<x.diets.length; i++) {
-                        if(x.diets[i].name.includes(e.target.name)) {
+                if (typeof x.diets[0] === 'object') {
+                    for (let i = 0; i < x.diets.length; i++) {
+                        if (x.diets[i].name.toLowerCase().includes(e.target.name)) {
                             return true;
                         }
                     }
@@ -48,7 +48,7 @@ export function Diets() {
             dispatch({
                 type: 'FILTER_CATEGORIES',
                 payload: filterCategory
-    
+
             })
         }
 
@@ -60,7 +60,7 @@ export function Diets() {
             {dietas && dietas.map(x => {
                 return (
                     <div className={dietsStyle.diet}>
-                        <input onClick={handleOnChange} id={x.id} type="checkbox" name={x.name.split('-').join(' ').toLowerCase()} />
+                        <input onClick={handleOnChange} id={x.id} type="checkbox" name={x.name.toLowerCase()} />
 
                         <label id={x.id} htmlFor={x.id}>{x.name}</label>
                     </div>

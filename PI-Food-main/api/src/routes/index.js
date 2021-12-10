@@ -40,7 +40,7 @@ const recipesDb = Recipe.findAll({
 include: Diet
 });
 
-const recipesApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+const recipesApi = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
 
 
 Promise.all([recipesDb, recipesApi])
@@ -77,5 +77,17 @@ Promise.all([recipesDb, recipesApi])
         .catch(error => next(error));
 
     });
+
+    router.put('/:recipeId', (req, res, next) => {
+      const {recipeId} = req.params;
+      const diets = req.body;
+
+      Recipe.findByPk(recipeId)
+        .then(response => {
+          response.setDiets(diets);
+          return res.sendStatus(200)
+        })
+        .catch(err => next(err));
+    })
 
     module.exports = router;

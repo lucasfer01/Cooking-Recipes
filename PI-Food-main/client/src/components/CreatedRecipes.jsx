@@ -22,7 +22,6 @@ export function CreatedRecipes() {
     const [recipes, setRecipes] = useState({recipes: [], position: 0});
 
     useEffect(() => {
-        console.log('preuba');
         dispatch({
             type: 'LOADER'
         })
@@ -33,8 +32,6 @@ export function CreatedRecipes() {
                     recipes: res.data,
                     position: 0
                 });
-
-                console.log(res.data);
 
                 dispatch({
                     type: 'LOADER'
@@ -145,7 +142,7 @@ export function CreatedRecipes() {
                 :
 
                 <div>
-                    <h1>No hay recetas creadas</h1>
+                    <h1 style={{color:'#ffffffcc', lineHeight:'80px', fontSize:'3rem'}}>No <br /> hay <br /> recetas <br /> creadas</h1>
                 </div>
             }
 

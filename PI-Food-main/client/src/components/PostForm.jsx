@@ -29,6 +29,12 @@ export function PostForm() {
             });
     }, [])
 
+    // function validator(input) {
+    //     if(!input || typeof input !== 'string') return false
+        
+    //     return true;
+    // }
+
     function handleOnChange(e) {
         if (e.target.name === 'rate' || e.target.name === 'healthRate') {
             if (parseInt(e.target.value) > 100) {
@@ -43,6 +49,7 @@ export function PostForm() {
                 })
             }
         }
+
         setValues({
             ...values,
             [e.target.name]: e.target.value
@@ -77,6 +84,10 @@ export function PostForm() {
 
     function handleOnSubmit(e) {
         e.preventDefault();
+
+        if(!values.name || !values.summary) {
+            return alert('no puede estar vacios')
+        }
 
         axios.post('http://localhost:3001/recipe', {
             name: values.name,

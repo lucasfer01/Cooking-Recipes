@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styleEditCards from './styles/EditCards.module.css';
 import axios from 'axios';
-import { RECIPE_URL } from './enviroment';
+import { RECIPE_URL, TYPES_URL, BACK_URL } from './enviroment';
 import { useNavigate, useParams } from 'react-router';
 
 export function EditCards() {
@@ -18,22 +18,51 @@ export function EditCards() {
     diets: []
   });
 
+  const [dietas, setDiets] = useState({
+    dietas: []
+  });
+
+  const [selectedDiets, setSelectedDiets] = useState()
+
   useEffect(() => {
-    axios.get(RECIPE_URL + `/${id}`)
+    const recipePromise = axios.get(RECIPE_URL + `/${id}`);
+    const dietPromise = axios.get(TYPES_URL);
+
+    Promise.all([recipePromise, dietPromise])
       .then(response => {
+        const [recipe, diets] = response;
+
         setInputs({
-          name: response.data.name,
-          summary: response.data.summary,
-          score: response.data.rate,
-          healthScore: response.data.healthRate,
-          steps: response.data.steps,
-          image: response.data.image,
-          diets: response.data.diets
-        })
-      })
+          name: recipe.data.name,
+          summary: recipe.data.summary,
+          score: recipe.data.rate,
+          healthScore: recipe.data.healthRate,
+          steps: recipe.data.steps,
+          image: recipe.data.image,
+          diets: recipe.data.diets
+        });
+
+        setDiets({ dietas: diets.data });
+
+        setSelectedDiets(recipe.data.diets);
+      });
   }, [id]);
 
   function handleOnChange(e) {
+    if(e.target.name === 'healthScore' || e.target.name === 'score') {
+      if(e.target.value >= 100) {
+        return setInputs({
+          ...inputs,
+          [e.target.name]: 100
+        })
+      } else if (e.target.value <= 1) {
+        return setInputs({
+          ...inputs,
+          [e.target.name]: 1
+        })
+      }
+    }
+
     setInputs({
       ...inputs,
       [e.target.name]: e.target.value
@@ -43,16 +72,23 @@ export function EditCards() {
   function handleOnSubmit(e) {
     e.preventDefault();
 
-    axios.put(RECIPE_URL + `/${id}`, {
+    const promiseRecipe = axios.put(RECIPE_URL + `/${id}`, {
       name: inputs.name,
       summary: inputs.summary,
       rate: inputs.score,
       healthRate: inputs.healthScore,
       image: inputs.image,
       steps: inputs.steps
-    }).then(response => {
-      navigate('/home/1')
     });
+
+    const dietsId = selectedDiets.map(diet => diet.id);
+    console.log(selectedDiets.diets);
+    const dietsPromise = axios.put(BACK_URL + `/${id}`, dietsId);
+
+    Promise.all([promiseRecipe, dietsPromise])
+      .then(response => {
+        navigate('/home/1')
+      });
   }
 
   function handleOnChangeSteps(e) {
@@ -66,6 +102,19 @@ export function EditCards() {
     })
   }
 
+  function handleOnClick(e) {
+    e.preventDefault();
+
+    const dietsFilter = selectedDiets.filter(x => x.id === e.target.id);
+    
+    if(dietsFilter.length) {
+      const filter = selectedDiets.filter(diet => diet.id !== e.target.id);
+
+      setSelectedDiets(filter);
+    } else {
+      setSelectedDiets([...selectedDiets, {id: e.target.id, name: e.target.name}])
+    }
+  }
 
   return (
     <div className={styleEditCards.contenedor}>
@@ -133,6 +182,27 @@ export function EditCards() {
 
           }
         </div>
+
+        {dietas && dietas.dietas.map(diet => {
+          return (
+            <>
+              <button onClick={handleOnClick} id={diet.id} name={diet.name}>{diet.name}</button>
+            </>
+          )
+        })}
+
+        <ul>
+          {selectedDiets && selectedDiets.map(dieta => {
+            return (
+              <div>
+                <li style={{color:'white', textAlign:'left'}} id={dieta.id}>{dieta.name}</li>
+              </div>
+            )
+          })}
+        </ul>
+
+        <br />
+        <br />
 
         <button type="submit">Actualizar Receta</button>
       </form>
