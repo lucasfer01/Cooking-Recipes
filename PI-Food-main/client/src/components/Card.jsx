@@ -17,7 +17,7 @@ export function Card({name, diets, image, score, id, healthScore}) {
                         
                         <ul className={cardStyle.spanDietContainer}>
                             {diets.length ? diets.map( x => (
-                                <li className={cardStyle.spanDiet} id={x.id || x}>{(x.name || x)[0].toUpperCase() + (x.name || x).slice(1)} <br /></li>
+                                <li className={cardStyle.spanDiet} id={x.name || x}>{(x.name || x)[0].toUpperCase() + (x.name || x).slice(1)} <br /></li>
                             )) : <span className={cardStyle.dietDefaultSpan}>-</span>}
                         </ul>
                     </div>

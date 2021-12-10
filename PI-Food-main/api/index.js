@@ -30,7 +30,7 @@ conn.sync({
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 
-  let diets = ['Whole30', 'Low FODMAP', 'Primal', 'Paleo', 'Pescetarian', 'Vegan', 'Ovo-Vegetarian', 'Lacto-Vegetarian', 'Vegetarian', 'Ketogenic', 'Gluten Free'];
+  let diets = ['Whole30', 'Low FODMAP', 'Primal', 'Paleo', 'Pescetarian', 'Vegan', 'Ovo Vegetarian', 'Lacto Vegetarian', 'Vegetarian', 'Ketogenic', 'Gluten Free'];
   
   diets = diets.map(x  => {
     Diet.create({

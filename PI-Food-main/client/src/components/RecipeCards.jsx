@@ -19,7 +19,7 @@ export function RecipeCards() {
             type: 'LOADER'
         })
 
-        state.showedData && axios.get('http://localhost:3001/recipes')
+        axios.get('http://localhost:3001/recipes')
             .then(res => {
                 dispatch({
                     type: 'GET_RECIPES',
