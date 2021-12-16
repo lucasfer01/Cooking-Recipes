@@ -1,17 +1,42 @@
 .contendorDiets {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: flex-start;
+  padding-top: 4.5rem;
+  position: absolute;
+  left: -2.8rem;
+  top: -1rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 8rem;
+  height: auto;
+  /* height: 12rem; */
+  justify-content: center;
+  align-items: center;
+  z-index: -10;
+  background-color: rgba(0, 0, 0, 0.548);
 }
 
 .diet {
-    width: 16%;
-    display: flex;
-    align-items: center;
+  width: 8rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  cursor: pointer;
+  transition: all .4s;
+}
+
+.diet:hover {
+    background-color: rgba(204, 204, 204, 0.5);
 }
 
 .diet label {
-    font-size: .8rem;
-    color: #fff;
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+  width: 70%;
+}
+
+.diet input {
+    /* width: 3rem; */
+    transform: scale(1.5);
 }

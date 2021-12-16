@@ -9,23 +9,7 @@ import buttonsStyle from './styles/Button.module.css'
 
 export function Buttons() {
     const [dietas, setDietas] = useState(false);
-    const [option, setOption] = useState({ value: '' });
     const [mayor, setMayor] = useState(true)
-
-    useEffect(() => {
-
-
-
-
-    }, [])
-
-    function handleOnChange(e) {
-        setOption({
-            ...option,
-            value: e.target.value
-        });
-    }
-
     const dispatch = useDispatch();
     const state = useSelector(state => state);
 
@@ -79,19 +63,17 @@ export function Buttons() {
     return (
         <div className={buttonsStyle.contenedor}>
             <div className={buttonsStyle.buttonDiet}>
-                <IoOptions />
-                <br />
+
                 <button className={buttonsStyle.buttonDietFilter} onClick={handleOnClickFiltroDietas}>
-                    Dietas
+                    <IoOptions className={buttonsStyle.buttonDietIcon} />
                 </button>
+
                 {dietas && <Diets />}
             </div>
 
             <div className={buttonsStyle.contenedorBotones}>
                 <div>
                     <SiBetfair />
-
-                    {/* <h5 className={buttonsStyle.tituloH5}>Ordenar por:</h5> */}
                 </div>
 
                 <div className={buttonsStyle.contenedorBotonesSort}>
