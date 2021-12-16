@@ -38,7 +38,7 @@ Para el Frontend se utiliza  React para la estructura, Redux para los estados gl
 Clonar el repositorio
 
 ```bash
-  git clone https://github.com/lucasfer01/Individual-Proyect---Food.git
+  git clone https://github.com/lucasfer01/Cooking-Recipes.git
 ```
 
 Ir a la carpeta api
