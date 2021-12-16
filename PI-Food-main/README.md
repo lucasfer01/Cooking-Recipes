@@ -15,5 +15,5 @@ Para el Frontend se utiliza  React para la estructura, Redux para los estados gl
 
 # Landing
 
-<img src='media/lanidng.jpeg' />
+<img src='media/landing.jpeg' height=400/>
 
