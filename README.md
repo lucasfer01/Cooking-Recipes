@@ -33,3 +33,49 @@ Para el Frontend se utiliza  React para la estructura, Redux para los estados gl
 
 <img src='media/recetas-creadas.jpeg' height='400' />
 
+## Como usarlo localmente
+
+Clonar el repositorio
+
+```bash
+  git clone https://github.com/lucasfer01/Individual-Proyect---Food.git
+```
+
+Ir a la carpeta api
+
+```bash
+  cd api
+```
+
+Instalar dependencias
+
+```bash
+  npm install
+```
+
+Levantar el servidor
+
+```bash
+  npm start
+```
+
+#### Abrir otra consola y abrir la carpeta del projecto
+
+Ir a la carpeta client
+
+```bash
+  cd client
+```
+
+Instalar dependencias
+
+```bash
+  npm install
+```
+
+Levantar la aplicación
+
+```bash
+  npm start
+```
+
