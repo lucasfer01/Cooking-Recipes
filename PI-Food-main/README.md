@@ -13,7 +13,23 @@ Para el Frontend se utiliza  React para la estructura, Redux para los estados gl
 
 ## Screenshots
 
-# Landing
+### Landing
 
-<img src='media/landing.jpeg' height=400/>
+<img src='media/landing.jpeg' height='400'/>
+
+
+### Home
+
+<img src='media/home-1.jpeg' height='400'/>
+<img src='media/home-2.jpeg' height='400'/>
+
+
+### Agregar recetas
+
+<img src='media/agregar-recetas.jpeg' height='400' />
+
+
+### Recetas creadas
+
+<img src='media/recetas-creadas.jpeg' height='400' />
 
