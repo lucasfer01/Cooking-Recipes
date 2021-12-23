@@ -1,12 +1,17 @@
 
 # Cooking Recipes
 
-Proyecto individual sobre recetas de cocina realizado en el bootcamp Soy Henry con el objetivo de afianzar los conocimientos de las tecnologias aprendidas
+Proyecto individual sobre recetas de cocina realizado con el objetivo de afianzar los conocimientos de las tecnologías aprendidas.
 
+### Características
+
+La app puede mostrar más de 5000 recetas de cocina como base, además de poder crear las propias recetas y guardarlas para su posterior uso. Cuenta con filtrados por nombre, tipo de dieta, puntuación y orden alfabético. Además se pueden editar y/o eliminar las recetas creadas.
+
+</br>
 
 ## Como esta construida la app?
 
-Para el Backend se utiliza `Node js` y `Express js` para levantar el servidor y `Sequelize` con `PostgreSQL` para la base de datos donde se alojaran las recetas que cree el usuario. Ademas de utilizar una api publica de [Spoonacular](https://spoonacular.com/food-api/docs) para las recetas.
+Para el Backend se utiliza `Node js` y `Express js` para levantar el servidor y `Sequelize` con `PostgreSQL` para la base de datos donde se alojarán las recetas que cree el usuario. Además de utilizar una api pública de [Spoonacular](https://spoonacular.com/food-api/docs) para las recetas.
 
 Para el Frontend se utiliza `JavaScript` y `React` para la estructura, `Redux` para los estados globales y `CSS` para los estilos.
 
